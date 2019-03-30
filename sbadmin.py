@@ -11,6 +11,10 @@ def index():
 def admin(pagename):
     return render_template(pagename+'.html')
 
+@app.route('/rankings')
+def rankings():
+    return render_template('rankings.html')
+
 @app.route('/<path:resource>')
 def serveStaticResource(resource):
 	return send_from_directory('static/', resource)
