@@ -14,7 +14,11 @@ class ApiRequests:
         response = requests.get(
             ' http://hackathon.ocupa2.com/instagram/ig_hashtag_search?q=%s&user_id=%s' % (hashtag, self.token))
         json_data = json.loads(response.text)
+<<<<<<< Updated upstream
         pprint(json_data)
+=======
+        return json_data
+>>>>>>> Stashed changes
 
     def get_top_media(self, hashtag_id):
         response = requests.get(
