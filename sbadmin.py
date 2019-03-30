@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from flask import Flask, url_for, render_template, send_from_directory
 import jinja2.exceptions
+from markupsafe import Markup
 
 app = Flask(__name__)
 @app.route('/')
@@ -13,7 +14,16 @@ def admin(pagename):
 
 @app.route('/rankings')
 def rankings():
-    return render_template('rankings.html')
+    return render_template('rankings.html',
+                           main_ranking_table=Markup("""
+                            <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>User</th>
+                            <th>Followers</th>
+                            <th>Total likes</th>
+                        </tr>
+                        </thead>"""))
 
 @app.route('/<path:resource>')
 def serveStaticResource(resource):
