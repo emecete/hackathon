@@ -8,9 +8,16 @@ def get_all_hashtags():
     json_hashtags = get_hashtags()
     for hashtag_group in json_hashtags:
         for hashtag in json_hashtags[hashtag_group]:
-            hashtags.append(hashtag)
-
+            hashtags.append(hashtag.replace("#", ""))
     return hashtags
+
+
+def hashtag_to_hashtag_id(hashtag_list):
+    hashtag_id_list = []
+    for h in hashtag_list:
+        hashtag_id_list = InstagramApiRequests.get_hashtag_id(h)
+    return hashtag_id_list
+
 
 def get_all_posts():
     ir = InstagramApiRequests()
