@@ -1,10 +1,14 @@
 import json
-from pprint import pprint
-
 import requests
 
 from utils import get_credentials
 
+HASHTAGS_FILEPATH = 'hashtag.json'
+
+
+def get_hashtags():
+    with open(HASHTAGS_FILEPATH) as f:
+        return json.load(f)
 
 class InstagramApiRequests:
     def __init__(self):
@@ -14,22 +18,24 @@ class InstagramApiRequests:
         response = requests.get(
             ' http://hackathon.ocupa2.com/instagram/ig_hashtag_search?q=%s&user_id=%s' % (hashtag, self.token))
         json_data = json.loads(response.text)
-        return(json_data)
+        return (json_data)
 
     def get_top_media(self, hashtag_id):
         response = requests.get(
             ' http://hackathon.ocupa2.com/instagram/%d/top_media?&user_id=%s' % (hashtag_id, self.token))
         json_data = json.loads(response.text)
-        return(json_data)
+        return (json_data)
 
     def get_recent_media(self, hashtag_id):
         response = requests.get(
             ' http://hackathon.ocupa2.com/instagram/%d/recent_media?&user_id=%s' % (hashtag_id, self.token))
         json_data = json.loads(response.text)
-        return(json_data)
+        return (json_data)
 
-    def get_post_metadata(self, post_id, id=True, comments_count=True):
+    def get_post_metadata(self, post_id, params='id, comments_count'):
         response = requests.get(
-            ' http://hackathon.ocupa2.com/instagram/media/%d?fields={fields}' % (post_id, ))
+            ' http://hackathon.ocupa2.com/instagram/media/%d?fields={fields}' % (post_id,params))
         json_data = json.loads(response.text)
-        return(json_data)
+        return json_data
+
+
