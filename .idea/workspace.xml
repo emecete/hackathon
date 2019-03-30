@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="855b021e-1837-41ff-87f0-15535915fa24" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/instagram_api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user_credentials.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sbadmin.py" beforeDir="false" afterPath="$PROJECT_DIR$/sbadmin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/rankings.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rankings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/instagram_api.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/instagram_api.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="13" column="75" lean-forward="true" selection-start-line="13" selection-start-column="75" selection-end-line="13" selection-end-column="75" />
+            <state relative-caret-position="281">
+              <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -253,12 +248,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1553935572802</updated>
-      <workItem from="1553935574784" duration="6387000" />
+      <workItem from="1553935574784" duration="6917000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6387000" />
+    <option name="totallyTimeSpent" value="6917000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -399,8 +394,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/instagram_api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="13" column="75" lean-forward="true" selection-start-line="13" selection-start-column="75" selection-end-line="13" selection-end-column="75" />
+        <state relative-caret-position="281">
+          <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
