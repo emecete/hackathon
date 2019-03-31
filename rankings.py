@@ -2,9 +2,14 @@ from pprint import pprint
 
 from concurrent_http import http_threader
 from instagram_api import get_hashtags, InstagramApiRequests, get_user_metadata
+from mongodb.utils import mongo_db
 
 
 def get_all_hashtags():
+    """
+    Reads all hashtag in the hashtag json file
+    :return: list containing all hashtag without "#" symbol, independently of hashtag categories
+    """
     hashtags = list()
     json_hashtags = get_hashtags()
     for hashtag_group in json_hashtags:
@@ -14,6 +19,11 @@ def get_all_hashtags():
 
 
 def hashtag_to_hashtag_id(hashtag_list):
+    """
+
+    :param hashtag_list:
+    :return:
+    """
     ir = InstagramApiRequests()
     hashtag_id_list = []
     for h in hashtag_list:
@@ -34,15 +44,18 @@ def get_all_posts():
 
 
 def get_all_posts_async():
-    #mdb = mongo_db()
+    mdb = mongo_db()
     ir = InstagramApiRequests()
     hashtag_id_list = hashtag_to_hashtag_id(get_all_hashtags())
     posts = http_threader(ir.get_recent_media, hashtag_id_list)
-    pprint(posts)
-    # for post in posts:
-    #     user = ir.get_post_metadata(post['id'])[0]['userId']
-    #     post['user'] = get_user_metadata(user)[0]
-    #     mdb.add_post(post)
+    pprint(len(posts))
+
+    for tag in posts:
+       for post in tag['data']:
+           user = ir.get_post_metadata(post['id'])[0]['userId']
+           post['user'] = get_user_metadata(user)[0]
+           pprint(post)
+           #mdb.add_post(post)
 
 
 get_all_posts_async()
