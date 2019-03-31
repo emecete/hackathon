@@ -7,9 +7,6 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12">
-            <h2 class="page-header">Upload an image!</h2>
-        </div>
         <form action="/classifier" method="POST">
           <div class="input-group">
             <input name="URL" type="text" class="form-control" placeholder="Insert image URL here">
@@ -18,12 +15,9 @@
             </span>
           </div>
         </form>
-        {{result}}
     </div>
     <div class="row">
-        <div class="col-lg-12">
-            <h2 class="page-header">Some examples</h2>
-        </div>
+        {{content}}
     </div>
 </div>
 {% endblock %}

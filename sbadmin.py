@@ -81,9 +81,12 @@ def classifier():
     img = np.array(img)
     # remove temporal image file
     os.remove("img.jpg")
-    classif = classify(img)
+    result = classify(img)
+    #result = "It is a Porsche!!"
+    content = Markup('<div class="card" style="width:100px"><img class="card-img-top" src= ' + URL + ' alt="Card '
+                     'image"  width="550" height="550"><div class="card-body"><h3 class="card-title">' + result + '</h3></div></div>')
     return make_response(
-        render_template('porsche_classifier.html', result=URL))
+        render_template('porsche_classifier.html', content=content))
 
 
 if __name__ == '__main__':

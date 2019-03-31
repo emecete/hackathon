@@ -62,7 +62,7 @@ def train(x, y):
     x = np.array(x)
     x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=10)
 
-    model.fit(x_train, y_train, batch_size=20, epochs=20, verbose=1)
+    model.fit(x_train, y_train, batch_size=10, epochs=2, verbose=1)
 
     loss, acc = model.evaluate(x_test, y_test, verbose=0)
     print(acc * 100)
