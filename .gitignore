@@ -148,3 +148,8 @@ dmypy.json
 
 .vscode
 .idea/
+<<<<<<< HEAD
+
+__pycache__/
+=======
+>>>>>>> master

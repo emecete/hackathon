@@ -1,0 +1,29 @@
+{% extends "base_layout.html" %} {% block title %}Sample{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Porsche Image Classifier</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Upload an image!</h2>
+        </div>
+        <form action="/classifier" method="POST">
+          <div class="input-group">
+            <input name="URL" type="text" class="form-control" placeholder="Insert image URL here">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Go!</button>
+            </span>
+          </div>
+        </form>
+        {{result}}
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Some examples</h2>
+        </div>
+    </div>
+</div>
+{% endblock %}
