@@ -6,6 +6,10 @@ from mongodb.utils import mongo_db
 
 
 def get_all_hashtags():
+    """
+    Reads all hashtag in the hashtag json file
+    :return: list containing all hashtag without "#" symbol, independently of hashtag categories
+    """
     hashtags = list()
     json_hashtags = get_hashtags()
     for hashtag_group in json_hashtags:
@@ -15,6 +19,11 @@ def get_all_hashtags():
 
 
 def hashtag_to_hashtag_id(hashtag_list):
+    """
+
+    :param hashtag_list:
+    :return:
+    """
     ir = InstagramApiRequests()
     hashtag_id_list = []
     for h in hashtag_list:

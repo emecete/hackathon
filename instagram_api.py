@@ -41,24 +41,45 @@ class InstagramApiRequests:
         self.token = get_credentials()['token']
 
     def get_hashtag_id(self, hashtag):
+        """
+        Requests hashtag_id for a specific hashtag
+        :param hashtag: hashtag name, ie. "gethealthy"
+        :return: hashtag_id representing hashtag in API
+        """
         response = requests.get(
             ' http://hackathon.ocupa2.com/instagram/ig_hashtag_search?q=%s' % (hashtag))
         json_data = json.loads(response.text)
         return json_data
 
     def get_top_media(self, hashtag_id):
+        """
+        Requests most popular posts for a specific hashtag
+        :param hashtag: hashtag name, ie. "gethealthy"
+        :return: dictionary containing most popular posts for a specific hashtag
+        """
         response = requests.get(
             ' http://hackathon.ocupa2.com/instagram/%d/top_media?&user_id=%s' % (hashtag_id, self.token))
         json_data = json.loads(response.text)
         return (json_data)
 
     def get_recent_media(self, hashtag_id):
+        """
+        Requests most recent posts for a specific hashtag
+        :param hashtag_id: hashtag name, ie. "gethealthy"
+        :return: dictionary containing most recent posts for a specific hashtag
+        """
         response = requests.get(
             ' http://hackathon.ocupa2.com/instagram/%d/recent_media?&user_id=%s' % (hashtag_id, self.token))
         json_data = json.loads(response.text)
         return (json_data)
 
     def get_post_metadata(self, post_id, params='username'):
+        """
+        Requests metadata for a specific post, this metadata contains the specified fields
+        :param post_id: id of the specific post whose metadata is going to be consulted
+        :param params: metadata specific fields to be consulted
+        :return: dictionary containing specific metadata of a especific post
+        """
         response = requests.get(
             ' http://hackathon.ocupa2.com/instagram/media/%d?fields=%s' % (post_id,params))
         json_data = json.loads(response.text)
