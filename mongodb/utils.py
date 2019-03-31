@@ -3,7 +3,7 @@ from pymongo import MongoClient
 
 class mongo_db:
     def __init__(self):
-        client = MongoClient('localhost', 27017)
+        client = MongoClient('localhost', 32768)
         self.db = client['ocupa2']
 
     def add_posts(self, post_list):

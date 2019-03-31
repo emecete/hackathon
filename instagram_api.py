@@ -42,9 +42,9 @@ class InstagramApiRequests:
 
     def get_hashtag_id(self, hashtag):
         response = requests.get(
-            ' http://hackathon.ocupa2.com/instagram/ig_hashtag_search?q=%s&user_id=%s' % (hashtag, self.token))
+            ' http://hackathon.ocupa2.com/instagram/ig_hashtag_search?q=%s' % (hashtag))
         json_data = json.loads(response.text)
-        return (json_data)
+        return json_data
 
     def get_top_media(self, hashtag_id):
         response = requests.get(

@@ -1,14 +1,11 @@
 from pprint import pprint
 
+from concurrent_http import http_threader
 from instagram_api import get_hashtags, InstagramApiRequests, get_user_metadata
 from mongodb.utils import mongo_db
 
 
 def get_all_hashtags():
-    """
-    Read the 'hashtag.json' file, in which it is contained different hashtags for different influencer types
-    :return: A list containing all hashtags without '#' symbol
-    """
     hashtags = list()
     json_hashtags = get_hashtags()
     for hashtag_group in json_hashtags:
@@ -18,22 +15,15 @@ def get_all_hashtags():
 
 
 def hashtag_to_hashtag_id(hashtag_list):
-    """
-    Request to Instagram API in order to obtain the hashtag_id for each of them (hashtag_list)
-    :param hashtag_list: List of strings, hashtag names
-    :return: A list of ids corresponding to Instagram hashtags
-    """
+    ir = InstagramApiRequests()
     hashtag_id_list = []
     for h in hashtag_list:
-        hashtag_id_list = InstagramApiRequests.get_hashtag_id(h)
+        print(h)
+        hashtag_id_list.append(ir.get_hashtag_id(h)['id'])
     return hashtag_id_list
 
 
 def get_all_posts():
-    """
-
-    :return:
-    """
     mdb = mongo_db()
     ir = InstagramApiRequests()
     for hashtag in get_all_hashtags():
@@ -44,4 +34,19 @@ def get_all_posts():
             mdb.add_post(post)
 
 
-get_all_posts()
+def get_all_posts_async():
+    mdb = mongo_db()
+    ir = InstagramApiRequests()
+    hashtag_id_list = hashtag_to_hashtag_id(get_all_hashtags())
+    posts = http_threader(ir.get_recent_media, hashtag_id_list)
+    pprint(len(posts))
+
+    for tag in posts:
+       for post in tag['data']:
+           user = ir.get_post_metadata(post['id'])[0]['userId']
+           post['user'] = get_user_metadata(user)[0]
+           pprint(post)
+           #mdb.add_post(post)
+
+
+get_all_posts_async()
