@@ -1,2 +1,2 @@
-pytest
-octopus-http
+pymongo
+aiohttp

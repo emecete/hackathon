@@ -1,2 +1,0 @@
-def hashtag_id():
-    
